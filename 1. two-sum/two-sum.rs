@@ -11,6 +11,6 @@ impl Solution {
             }
             i1+=1
         }
-        vec![0,1]
+        unreachable!()
     }
 }
