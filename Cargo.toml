@@ -1,0 +1,7 @@
+[workspace]
+
+members = [
+    "two-sum",
+    "add-two-numbers",
+    "longest-substring-without-repeating-characters",
+]
