@@ -1,6 +1,6 @@
 [package]
 name = "two-sum"
-version = "0.1.0"
+version = "1.0.1"
 authors = ["miRoox <miroox@outlook.com>"]
 edition = "2018"
 
