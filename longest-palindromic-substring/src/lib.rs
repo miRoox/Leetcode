@@ -35,7 +35,7 @@ impl Solution {
                 offset = 0;
             }
         }
-        s[start..end+1].to_string()
+        s[start..=end].to_string()
     }
 }
 //---
