@@ -8,4 +8,5 @@ members = [
     "longest-palindromic-substring",
     "zigzag-conversion",
     "reverse-integer",
+    "string-to-integer-atoi",
 ]
