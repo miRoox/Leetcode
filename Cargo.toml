@@ -7,4 +7,5 @@ members = [
     "median-of-two-sorted-arrays",
     "longest-palindromic-substring",
     "zigzag-conversion",
+    "reverse-integer",
 ]
