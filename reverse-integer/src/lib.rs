@@ -6,16 +6,16 @@ impl Solution {
         let mut x = x;
         let mut ans = 0i32;
         while x!=0 {
-            let (try_mul, overflowed) = ans.overflowing_mul(10);
-            if overflowed {
+            if let Some(try_mul) = ans.checked_mul(10) {
+                if let Some(try_add) = try_mul.checked_add(x%10) {
+                    ans = try_add; // ans = 10*ans+x%10
+                    x /= 10;
+                } else {
+                    return 0;
+                }
+            } else {
                 return 0;
             }
-            let (try_add, overflowed) = try_mul.overflowing_add(x%10);
-            if overflowed {
-                return 0;
-            }
-            ans = try_add; // ans = 10*ans+x%10
-            x /= 10;
         }
         ans
     }
