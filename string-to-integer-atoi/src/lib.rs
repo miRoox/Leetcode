@@ -17,7 +17,7 @@ impl Solution {
             if c.is_ascii_digit() {
                 let d = c.to_digit(10).unwrap() as i32;
                 result = result.saturating_mul(10)
-                               .saturating_add(d.saturating_mul(sign));
+                               .saturating_add(sign*d);
             } else {
                 break
             }
