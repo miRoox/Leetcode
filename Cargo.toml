@@ -9,4 +9,5 @@ members = [
     "zigzag-conversion",
     "reverse-integer",
     "string-to-integer-atoi",
+    "palindrome-number",
 ]
