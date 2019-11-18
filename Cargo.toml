@@ -10,4 +10,5 @@ members = [
     "reverse-integer",
     "string-to-integer-atoi",
     "palindrome-number",
+    "regular-expression-matching",
 ]
