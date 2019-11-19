@@ -84,4 +84,11 @@ mod tests {
         let p = String::from("mis*is*p*.");
         assert!(!Solution::is_match(s,p));
     }
+
+    #[test]
+    fn mismatch_any_repeat2() {
+        let s = String::from("ab");
+        let p = String::from(".*c");
+        assert!(!Solution::is_match(s,p));
+    }
 }
