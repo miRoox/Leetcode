@@ -1,40 +1,46 @@
 pub struct Solution { }
 
 //---
+use std::str::Chars;
 impl Solution {
+
     pub fn is_match(s: String, p: String) -> bool {
-        Solution::is_match_impl(&s[..],&p[..])
+        Solution::is_match_impl(s.chars(),p.chars())
     }
 
-    fn is_match_impl(s: &str, p: &str) -> bool {
-        if !s.is_empty() && !p.is_empty() {
-            if Solution::str_eq_first(&p[1..],"*") {
-                let mut i = 0;
-                while i<=s.len() && Solution::match_first(&s[i..],&p[0..]) {
-                    if Solution::is_match_impl(&s[i..],&p[2..]) {
-                        return true
+    fn is_match_impl(mut s: Chars, mut p: Chars) -> bool {
+        //println!("{:?}\n{:?}",s.as_str(),p.as_str());
+        if let Some(pc) = p.next() {
+            let p1 = p.clone();
+            let mut sco = s.clone().next();
+            match p.next() {
+                Some('*') => {
+                    while Solution::match_single(sco, pc) {
+                        if Solution::is_match_impl(s.clone(),p.clone()) {
+                            return true
+                        }
+                        s.next();
+                        sco=s.clone().next();
                     }
-                    i += 1;
+                    Solution::is_match_impl(s,p)
+                },
+                _=> if Solution::match_single(s.next(), pc) {
+                    Solution::is_match_impl(s, p1)
+                } else {
+                    false
                 }
-                Solution::is_match_impl(&s[i..],&p[2..])
-            } else {
-                Solution::match_first(&s[0..],&p[0..]) && Solution::is_match_impl(&s[1..],&p[1..])
             }
         } else {
-            s.is_empty() && p.is_empty()
+            s.next()==None
         }
     }
 
-    fn match_first(s: &str, p: &str) -> bool {
-        Solution::str_eq_first(p,".") || Solution::str_eq_first(s,p)
-    }
-
-    // we need this since &str is not null-terminated string
-    fn str_eq_first(s: &str, p: &str) -> bool {
-        if !s.is_empty() && !p.is_empty() {
-            &s[0..=0]==&p[0..=0]
+    fn match_single(sco: Option<char>, pc: char) -> bool {
+        //println!(">> {:?} : {:?}",sco,pc);
+        if let Some(sc) = sco {
+            sc==pc || pc=='.'
         } else {
-            s.is_empty() && p.is_empty()
+            false
         }
     }
 }
@@ -43,12 +49,6 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    fn str_null_slice() {
-        let s = "aa";
-        assert!(s[2..].is_empty());
-    }
 
     #[test]
     fn mismatch_single() {
