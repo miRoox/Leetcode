@@ -13,4 +13,5 @@ members = [
     "regular-expression-matching",
     "container-with-most-water",
     "integer-to-roman",
+    "roman-to-integer",
 ]
