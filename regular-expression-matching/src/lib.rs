@@ -79,6 +79,20 @@ mod tests {
     }
 
     #[test]
+    fn match_any_repeat2() {
+        let s = String::from("mississippi");
+        let p = String::from("mis*is*ip*.");
+        assert!(Solution::is_match(s,p));
+    }
+
+    #[test]
+    fn mismatch_other_repeat() {
+        let s = String::from("aaa");
+        let p = String::from("ab*a");
+        assert!(!Solution::is_match(s,p));
+    }
+
+    #[test]
     fn mismatch_any_repeat() {
         let s = String::from("mississippi");
         let p = String::from("mis*is*p*.");
