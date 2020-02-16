@@ -1,44 +1,39 @@
 pub struct Solution { }
 
 //---
-use std::str::Chars;
 impl Solution {
-
     pub fn is_match(s: String, p: String) -> bool {
-        Solution::is_match_impl(s.chars(),p.chars())
+        Solution::is_match_impl(s.as_bytes(),p.as_bytes())
     }
 
-    fn is_match_impl(mut s: Chars, mut p: Chars) -> bool {
-        //println!("{:?}\n{:?}",s.as_str(),p.as_str());
-        if let Some(pc) = p.next() {
-            let p1 = p.clone();
-            let mut sco = s.clone().next();
-            match p.next() {
-                Some('*') => {
-                    while Solution::match_single(sco, pc) {
-                        if Solution::is_match_impl(s.clone(),p.clone()) {
+    fn is_match_impl(mut s: &[u8], p: &[u8]) -> bool {
+        if let Some(&pc) = p.first() {
+            let mut sco = s.first();
+            match p.get(1) {
+                Some(b'*') => {
+                    while Solution::match_single(sco.copied(), pc) {
+                        if Solution::is_match_impl(s,&p[2..]) {
                             return true
                         }
-                        s.next();
-                        sco=s.clone().next();
+                        s=&s[1..];
+                        sco=s.first();
                     }
-                    Solution::is_match_impl(s,p)
+                    Solution::is_match_impl(s,&p[2..])
                 },
-                _=> if Solution::match_single(s.next(), pc) {
-                    Solution::is_match_impl(s, p1)
+                _=> if Solution::match_single(s.first().copied(), pc) {
+                    Solution::is_match_impl(&s[1..], &p[1..])
                 } else {
                     false
                 }
             }
         } else {
-            s.next()==None
+            s.first()==None
         }
     }
 
-    fn match_single(sco: Option<char>, pc: char) -> bool {
-        //println!(">> {:?} : {:?}",sco,pc);
+    fn match_single(sco: Option<u8>, pc: u8) -> bool {
         if let Some(sc) = sco {
-            sc==pc || pc=='.'
+            sc==pc || pc==b'.'
         } else {
             false
         }
