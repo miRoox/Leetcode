@@ -1,9 +1,9 @@
-pub struct Solution { }
+pub struct Solution {}
 
 //---
 impl Solution {
     pub fn is_match(s: String, p: String) -> bool {
-        Solution::is_match_impl(s.as_bytes(),p.as_bytes())
+        Solution::is_match_impl(s.as_bytes(), p.as_bytes())
     }
 
     fn is_match_impl(mut s: &[u8], p: &[u8]) -> bool {
@@ -12,28 +12,30 @@ impl Solution {
             match p.get(1) {
                 Some(b'*') => {
                     while Solution::match_single(sco.copied(), pc) {
-                        if Solution::is_match_impl(s,&p[2..]) {
-                            return true
+                        if Solution::is_match_impl(s, &p[2..]) {
+                            return true;
                         }
-                        s=&s[1..];
-                        sco=s.first();
+                        s = &s[1..];
+                        sco = s.first();
                     }
-                    Solution::is_match_impl(s,&p[2..])
-                },
-                _=> if Solution::match_single(s.first().copied(), pc) {
-                    Solution::is_match_impl(&s[1..], &p[1..])
-                } else {
-                    false
+                    Solution::is_match_impl(s, &p[2..])
+                }
+                _ => {
+                    if Solution::match_single(s.first().copied(), pc) {
+                        Solution::is_match_impl(&s[1..], &p[1..])
+                    } else {
+                        false
+                    }
                 }
             }
         } else {
-            s.first()==None
+            s.first() == None
         }
     }
 
     fn match_single(sco: Option<u8>, pc: u8) -> bool {
         if let Some(sc) = sco {
-            sc==pc || pc==b'.'
+            sc == pc || pc == b'.'
         } else {
             false
         }
@@ -49,55 +51,55 @@ mod tests {
     fn mismatch_single() {
         let s = String::from("aa");
         let p = String::from("a");
-        assert!(!Solution::is_match(s,p));
+        assert!(!Solution::is_match(s, p));
     }
 
     #[test]
     fn match_repeat() {
         let s = String::from("aa");
         let p = String::from("a*");
-        assert!(Solution::is_match(s,p));
+        assert!(Solution::is_match(s, p));
     }
 
     #[test]
     fn match_any_repeat() {
         let s = String::from("ab");
         let p = String::from(".*");
-        assert!(Solution::is_match(s,p));
+        assert!(Solution::is_match(s, p));
     }
 
     #[test]
     fn match_repeat_null() {
         let s = String::from("aab");
         let p = String::from("c*a*b");
-        assert!(Solution::is_match(s,p));
+        assert!(Solution::is_match(s, p));
     }
 
     #[test]
     fn match_any_repeat2() {
         let s = String::from("mississippi");
         let p = String::from("mis*is*ip*.");
-        assert!(Solution::is_match(s,p));
+        assert!(Solution::is_match(s, p));
     }
 
     #[test]
     fn mismatch_other_repeat() {
         let s = String::from("aaa");
         let p = String::from("ab*a");
-        assert!(!Solution::is_match(s,p));
+        assert!(!Solution::is_match(s, p));
     }
 
     #[test]
     fn mismatch_any_repeat() {
         let s = String::from("mississippi");
         let p = String::from("mis*is*p*.");
-        assert!(!Solution::is_match(s,p));
+        assert!(!Solution::is_match(s, p));
     }
 
     #[test]
     fn mismatch_any_repeat2() {
         let s = String::from("ab");
         let p = String::from(".*c");
-        assert!(!Solution::is_match(s,p));
+        assert!(!Solution::is_match(s, p));
     }
 }

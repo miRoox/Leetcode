@@ -1,25 +1,28 @@
-pub struct Solution { }
+pub struct Solution {}
 
 //---
 impl Solution {
-    pub fn my_atoi(s: String) -> i32 { 
+    pub fn my_atoi(s: String) -> i32 {
         let mut result = 0i32;
-        let mut iter = s.chars()
-                        .skip_while(|c| c.is_whitespace())
-                        .peekable();
+        let mut iter = s.chars().skip_while(|c| c.is_whitespace()).peekable();
         let sign = match iter.peek() {
-            Some('-') => {iter.next();-1},
-            Some('+') => {iter.next();1},
+            Some('-') => {
+                iter.next();
+                -1
+            }
+            Some('+') => {
+                iter.next();
+                1
+            }
             Some(c) if c.is_ascii_digit() => 1,
             _ => return 0,
         };
         for c in iter {
             if c.is_ascii_digit() {
                 let d = c.to_digit(10).unwrap() as i32;
-                result = result.saturating_mul(10)
-                               .saturating_add(sign*d);
+                result = result.saturating_mul(10).saturating_add(sign * d);
             } else {
-                break
+                break;
             }
         }
         result

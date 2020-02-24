@@ -1,4 +1,4 @@
-pub struct Solution { }
+pub struct Solution {}
 
 //---
 impl Solution {
@@ -16,8 +16,8 @@ impl Solution {
                 'M' => 1000,
                 _ => unreachable!(),
             };
-            result += if current>last {
-                current-2*last
+            result += if current > last {
+                current - 2 * last
             } else {
                 current
             };

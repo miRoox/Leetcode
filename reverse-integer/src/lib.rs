@@ -1,13 +1,13 @@
-pub struct Solution { }
+pub struct Solution {}
 
 //---
 impl Solution {
     pub fn reverse(x: i32) -> i32 {
         let mut x = x;
         let mut ans = 0i32;
-        while x!=0 {
+        while x != 0 {
             if let Some(try_mul) = ans.checked_mul(10) {
-                if let Some(try_add) = try_mul.checked_add(x%10) {
+                if let Some(try_add) = try_mul.checked_add(x % 10) {
                     ans = try_add; // ans = 10*ans+x%10
                     x /= 10;
                 } else {
