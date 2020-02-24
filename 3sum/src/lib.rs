@@ -41,6 +41,7 @@ impl Solution {
                 }
             }
         }
+        result.sort_unstable();
         result.dedup();
         result
     }
