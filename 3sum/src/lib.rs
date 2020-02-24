@@ -5,20 +5,25 @@ use std::cmp::Ordering::*;
 
 impl Solution {
     pub fn three_sum(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
+        let nums = nums.as_mut_slice();
         if nums.len() < 3 {
-            return Vec::new();
+            return vec![];
         }
         nums.sort_unstable();
         unsafe { Solution::three_sum_impl(nums) }
     }
 
-    unsafe fn three_sum_impl(nums: Vec<i32>) -> Vec<Vec<i32>> {
+    #[inline(always)]
+    unsafe fn three_sum_impl(nums: &[i32]) -> Vec<Vec<i32>> {
         const TARGET: i32 = 0;
         let mut result = Vec::new();
         let start = nums.as_ptr();
         let end = start.add(nums.len() - 1);
         let mut i1 = start;
         while i1 < end {
+            if *i1 > TARGET {
+                break;
+            }
             while i1 > start && *i1 == *i1.sub(1) {
                 i1 = i1.add(1);
             }
