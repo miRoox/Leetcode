@@ -57,4 +57,18 @@ mod tests {
         let result = vec![vec![-1, -1, 2], vec![-1, 0, 1]];
         assert_eq!(Solution::three_sum(nums), result);
     }
+
+    #[test]
+    fn many_dup() {
+        let nums = vec![-4, -2, -2, -2, 0, 1, 2, 2, 2, 3, 3, 4, 4, 6, 6];
+        let result = vec![
+            vec![-4, -2, 6],
+            vec![-4, 0, 4],
+            vec![-4, 1, 3],
+            vec![-4, 2, 2],
+            vec![-2, -2, 4],
+            vec![-2, 0, 2],
+        ];
+        assert_eq!(Solution::three_sum(nums), result);
+    }
 }
