@@ -16,4 +16,5 @@ members = [
     "roman-to-integer",
     "longest-common-prefix",
     "3sum",
+    "3sum-closest"
 ]
