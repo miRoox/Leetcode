@@ -6,7 +6,7 @@ const KEY_MAP: [&str; 8] = ["abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "w
 impl Solution {
     pub fn letter_combinations(digits: String) -> Vec<String> {
         let mut result = Vec::with_capacity(3usize.pow(digits.len() as u32));
-        Solution::search(&mut result, digits.bytes(), String::new());
+        Self::search(&mut result, digits.bytes(), String::new());
         result
     }
 
@@ -18,7 +18,7 @@ impl Solution {
             for c in KEY_MAP[(key - b'2') as usize].chars() {
                 let mut next = current.clone();
                 next.push(c);
-                Solution::search(result, iter.clone(), next)
+                Self::search(result, iter.clone(), next)
             }
         } else if !current.is_empty() {
             result.push(current);

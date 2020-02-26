@@ -34,7 +34,7 @@ impl Solution {
             None
         } else {
             Some(Box::new(ListNode {
-                next: Solution::add_two_impl(&next1, &next2, val0 / 10),
+                next: Self::add_two_impl(&next1, &next2, val0 / 10),
                 val: val0 % 10,
             }))
         }
@@ -43,7 +43,7 @@ impl Solution {
         l1: Option<Box<ListNode>>,
         l2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
-        let result = Solution::add_two_impl(&l1, &l2, 0);
+        let result = Self::add_two_impl(&l1, &l2, 0);
         if result == None {
             Some(Box::new(ListNode::new(0)))
         } else {

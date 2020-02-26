@@ -3,7 +3,7 @@ pub struct Solution {}
 //---
 impl Solution {
     pub fn is_match(s: String, p: String) -> bool {
-        Solution::is_match_impl(s.as_bytes(), p.as_bytes())
+        Self::is_match_impl(s.as_bytes(), p.as_bytes())
     }
 
     fn is_match_impl(mut s: &[u8], p: &[u8]) -> bool {
@@ -11,18 +11,18 @@ impl Solution {
             let mut sco = s.first();
             match p.get(1) {
                 Some(b'*') => {
-                    while Solution::match_single(sco.copied(), pc) {
-                        if Solution::is_match_impl(s, &p[2..]) {
+                    while Self::match_single(sco.copied(), pc) {
+                        if Self::is_match_impl(s, &p[2..]) {
                             return true;
                         }
                         s = &s[1..];
                         sco = s.first();
                     }
-                    Solution::is_match_impl(s, &p[2..])
+                    Self::is_match_impl(s, &p[2..])
                 }
                 _ => {
-                    if Solution::match_single(s.first().copied(), pc) {
-                        Solution::is_match_impl(&s[1..], &p[1..])
+                    if Self::match_single(s.first().copied(), pc) {
+                        Self::is_match_impl(&s[1..], &p[1..])
                     } else {
                         false
                     }

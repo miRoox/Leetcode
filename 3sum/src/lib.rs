@@ -10,7 +10,7 @@ impl Solution {
             return vec![];
         }
         nums.sort_unstable();
-        unsafe { Solution::three_sum_impl(nums) }
+        unsafe { Self::three_sum_impl(nums) }
     }
 
     #[inline(always)]

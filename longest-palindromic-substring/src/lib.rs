@@ -2,6 +2,7 @@ pub struct Solution {}
 
 //---
 impl Solution {
+    #[inline(always)]
     fn center_spread(s: &[u8], left: usize, right: usize) -> (usize, usize) {
         let mut lp = left;
         let mut rp = right;
@@ -15,6 +16,7 @@ impl Solution {
         }
         (lp + 1, rp - 1)
     }
+
     pub fn longest_palindrome(s: String) -> String {
         if s.is_empty() {
             return s;
@@ -23,7 +25,7 @@ impl Solution {
         let (mut start, mut end) = (0, 0);
         let (mut current, mut offset) = (0, 0);
         while current + offset < s.len() {
-            let (cstart, cend) = Solution::center_spread(s_chars, current, current + offset);
+            let (cstart, cend) = Self::center_spread(s_chars, current, current + offset);
             if cstart < cend && cend - cstart > end - start {
                 start = cstart;
                 end = cend;
