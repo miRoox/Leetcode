@@ -18,4 +18,5 @@ members = [
     "3sum",
     "3sum-closest",
     "letter-combinations-of-a-phone-number",
+    "4sum"
 ]
