@@ -10,31 +10,23 @@ impl Solution {
             return vec![];
         }
         nums.sort_unstable();
-        unsafe { Self::four_sum_impl(nums,target) }
+        unsafe { Self::four_sum_impl(nums, target) }
     }
 
     #[inline(always)]
-    unsafe fn four_sum_impl(nums : &[i32], target : i32) -> Vec<Vec<i32>> {
+    unsafe fn four_sum_impl(nums: &[i32], target: i32) -> Vec<Vec<i32>> {
         let mut result = Vec::new();
         let start = nums.as_ptr();
         let end = start.add(nums.len() - 1);
         let mut i1 = start;
-        'main: while i1 < end.sub(2) {
-            if *i1 > target {
-                break 'main;
-            }
-            Self::skip_dup(&mut i1, &start);
+        while i1 < end.sub(2) {
             let mut i2 = i1.add(1);
             while i2 < end.sub(1) {
-                Self::skip_dup(&mut i2, &start);
                 let s2 = *i1 + *i2;
-                if s2 > target {
-                    break 'main;
-                }
                 let mut i3 = i2.add(1);
                 let mut i4 = end;
                 while i3 < i4 {
-                    match (s2 + *i3 +*i4).cmp(&target) {
+                    match (s2 + *i3 + *i4).cmp(&target) {
                         Less => i3 = i3.add(1),
                         Greater => i4 = i4.sub(1),
                         Equal => {
@@ -48,14 +40,9 @@ impl Solution {
             }
             i1 = i1.add(1);
         }
+        result.sort_unstable();
+        result.dedup();
         result
-    }
-
-    #[inline(always)]
-    unsafe fn skip_dup(i : &mut *const i32, start : &* const i32) {
-        while *i > *start && **i == *i.sub(1) {
-            *i = i.add(1);
-        }
     }
 }
 //---
@@ -67,10 +54,57 @@ mod tests {
     #[test]
     fn it_works() {
         let nums = vec![1, 0, -1, 0, -2, 2];
+        let result = vec![vec![-2, -1, 1, 2], vec![-2, 0, 0, 2], vec![-1, 0, 0, 1]];
+        assert_eq!(Solution::four_sum(nums, 0), result);
+    }
+
+    #[test]
+    fn zeros() {
+        let nums = vec![0, 0, 0, 0];
+        let result = vec![vec![0, 0, 0, 0]];
+        assert_eq!(Solution::four_sum(nums, 0), result);
+    }
+
+    #[test]
+    fn negative_target() {
+        let nums = vec![1, -2, -5, -4, -3, 3, 3, 5];
+        let result = vec![vec![-5, -4, -3, 1]];
+        assert_eq!(Solution::four_sum(nums, -11), result);
+    }
+
+    #[test]
+    fn complex() {
+        let nums = vec![-5, -4, -3, -2, -1, 0, 0, 1, 2, 3, 4, 5];
         let result = vec![
+            vec![-5, -4, 4, 5],
+            vec![-5, -3, 3, 5],
+            vec![-5, -2, 2, 5],
+            vec![-5, -2, 3, 4],
+            vec![-5, -1, 1, 5],
+            vec![-5, -1, 2, 4],
+            vec![-5, 0, 0, 5],
+            vec![-5, 0, 1, 4],
+            vec![-5, 0, 2, 3],
+            vec![-4, -3, 2, 5],
+            vec![-4, -3, 3, 4],
+            vec![-4, -2, 1, 5],
+            vec![-4, -2, 2, 4],
+            vec![-4, -1, 0, 5],
+            vec![-4, -1, 1, 4],
+            vec![-4, -1, 2, 3],
+            vec![-4, 0, 0, 4],
+            vec![-4, 0, 1, 3],
+            vec![-3, -2, 0, 5],
+            vec![-3, -2, 1, 4],
+            vec![-3, -2, 2, 3],
+            vec![-3, -1, 0, 4],
+            vec![-3, -1, 1, 3],
+            vec![-3, 0, 0, 3],
+            vec![-3, 0, 1, 2],
+            vec![-2, -1, 0, 3],
             vec![-2, -1, 1, 2],
-            vec![-2,  0, 0, 2],
-            vec![-1,  0, 0, 1]
+            vec![-2, 0, 0, 2],
+            vec![-1, 0, 0, 1],
         ];
         assert_eq!(Solution::four_sum(nums, 0), result);
     }
