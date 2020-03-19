@@ -1,7 +1,7 @@
 pub struct Solution {}
 
 //---
-use std::cmp::Ordering::*;
+use std::collections::HashMap;
 
 impl Solution {
     pub fn four_sum(mut nums: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
@@ -10,39 +10,35 @@ impl Solution {
             return vec![];
         }
         nums.sort_unstable();
-        unsafe { Self::four_sum_impl(nums, target) }
-    }
-
-    #[inline(always)]
-    unsafe fn four_sum_impl(nums: &[i32], target: i32) -> Vec<Vec<i32>> {
+        let cache = Self::two_sum_cache(nums);
         let mut result = Vec::new();
-        let start = nums.as_ptr();
-        let end = start.add(nums.len() - 1);
-        let mut i1 = start;
-        while i1 < end.sub(2) {
-            let mut i2 = i1.add(1);
-            while i2 < end.sub(1) {
-                let s2 = *i1 + *i2;
-                let mut i3 = i2.add(1);
-                let mut i4 = end;
-                while i3 < i4 {
-                    match (s2 + *i3 + *i4).cmp(&target) {
-                        Less => i3 = i3.add(1),
-                        Greater => i4 = i4.sub(1),
-                        Equal => {
-                            result.push(vec![*i1, *i2, *i3, *i4]);
-                            i3 = i3.add(1);
-                            i4 = i4.sub(1);
+        for i in 0..nums.len() {
+            for j in i + 1..nums.len() {
+                let key = target - nums[i] - nums[j];
+                if let Some(vec) = cache.get(&key) {
+                    for &(m, n) in vec {
+                        if i > n {
+                            result.push(vec![nums[m], nums[n], nums[i], nums[j]]);
                         }
                     }
                 }
-                i2 = i2.add(1);
             }
-            i1 = i1.add(1);
         }
         result.sort_unstable();
         result.dedup();
         result
+    }
+
+    #[inline(always)]
+    fn two_sum_cache(nums: &[i32]) -> HashMap<i32, Vec<(usize, usize)>> {
+        let mut cache = HashMap::new();
+        for i in 0..nums.len() - 1 {
+            for j in i + 1..nums.len() {
+                let key = nums[i] + nums[j];
+                cache.entry(key).or_insert_with(Vec::new).push((i, j));
+            }
+        }
+        cache
     }
 }
 //---
