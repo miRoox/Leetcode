@@ -13,7 +13,7 @@ impl Solution {
             }
             i1 += 1
         }
-        unreachable!()
+        unsafe { std::hint::unreachable_unchecked() }
     }
 }
 
