@@ -12,6 +12,6 @@ jobs:
         run: |
           cd build
           cmake ..
-          cmake --build.
+          cmake --build .
       - name: Test
         run: ctest --build-config Debug -VV
