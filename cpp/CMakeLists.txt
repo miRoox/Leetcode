@@ -25,7 +25,7 @@ enable_testing()
 
 include_directories(${DOCTEST_INCLUDE_DIR})
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 add_subdirectory(two-sum)
