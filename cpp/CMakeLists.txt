@@ -30,3 +30,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 add_subdirectory(two-sum)
 add_subdirectory(add-two-numbers)
+add_subdirectory(next-permutation)
