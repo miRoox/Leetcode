@@ -1,6 +1,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
 #include <initializer_list>
+#include <iterator>
 #include <numeric>
 
 struct ListNode {
