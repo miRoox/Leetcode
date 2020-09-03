@@ -4,5 +4,5 @@ project(Leetcode)
 
 enable_testing()
 
-add_subdirectory(CPP)
-add_subdirectory(Rust)
+add_subdirectory(cpp)
+add_subdirectory(rust)
