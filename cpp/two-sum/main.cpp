@@ -6,7 +6,7 @@ using std::vector;
 
 class Solution {
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
+    vector<int> twoSum(const vector<int>& nums, int target) {
         const auto size = nums.size();
         for (int i = 0; i < size; ++i)
         {
