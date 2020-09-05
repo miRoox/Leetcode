@@ -81,4 +81,11 @@ mod tests {
         ];
         assert_eq!(Solution::three_sum(nums), result);
     }
+
+    #[test]
+    fn zeros() {
+        let nums = vec![0, 0, 0, 0];
+        let result = vec![vec![0, 0, 0]];
+        assert_eq!(Solution::three_sum(nums), result);
+    }
 }
