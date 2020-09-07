@@ -6,6 +6,7 @@ impl Solution {
         Self::is_match_impl(s.as_bytes(), p.as_bytes())
     }
 
+    #[inline]
     fn is_match_impl(mut s: &[u8], p: &[u8]) -> bool {
         if let Some(&pc) = p.first() {
             let mut sco = s.first();
@@ -21,11 +22,8 @@ impl Solution {
                     Self::is_match_impl(s, &p[2..])
                 }
                 _ => {
-                    if Self::match_single(s.first().copied(), pc) {
-                        Self::is_match_impl(&s[1..], &p[1..])
-                    } else {
-                        false
-                    }
+                    Self::match_single(s.first().copied(), pc)
+                        && Self::is_match_impl(&s[1..], &p[1..])
                 }
             }
         } else {
@@ -33,6 +31,7 @@ impl Solution {
         }
     }
 
+    #[inline(always)]
     fn match_single(sco: Option<u8>, pc: u8) -> bool {
         if let Some(sc) = sco {
             sc == pc || pc == b'.'
