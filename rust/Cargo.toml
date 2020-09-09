@@ -20,4 +20,5 @@ members = [
     "letter-combinations-of-a-phone-number",
     "4sum",
     "rotate-image",
+    "power-of-two",
 ]
