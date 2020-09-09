@@ -7,6 +7,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build
+        env:
+          CC: clang-9
+          CXX: clang++-9
         run: |
           cmake ..
           cmake --build .
