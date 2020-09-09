@@ -3,12 +3,8 @@ pub struct Solution {}
 impl Solution {
     #[allow(non_snake_case)]
     pub fn hammingWeight(n: u32) -> i32 {
-        #[cfg(target_arch = "x86")]
-        use core::arch::x86::_popcnt32;
-        #[cfg(target_arch = "x86_64")]
-        use core::arch::x86_64::_popcnt32;
         // Cheat!
-        unsafe { _popcnt32(n as i32) }
+        n.count_ones() as i32
     }
 }
 
