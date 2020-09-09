@@ -9,7 +9,7 @@ jobs:
       - name: Build
         env:
           CC: clang-9
-          CXX: clang-9
+          CXX: clang++-9
         run: |
           cmake ..
           cmake --build .
