@@ -21,4 +21,5 @@ members = [
     "4sum",
     "rotate-image",
     "power-of-two",
+    "number-of-1-bits",
 ]
