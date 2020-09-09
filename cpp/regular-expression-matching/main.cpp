@@ -29,7 +29,7 @@ public:
     }
 };
 
-TEST_CASE("regular expression matching") {
+TEST_CASE("Solution") {
     Solution sol;
     SUBCASE("mismatch single") {
         CHECK(!sol.isMatch("aa", "a"));

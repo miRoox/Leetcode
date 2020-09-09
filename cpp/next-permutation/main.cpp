@@ -12,7 +12,7 @@ public:
 };
 
 
-TEST_CASE("next permutation") {
+TEST_CASE("Solution") {
     Solution sol;
     SUBCASE("basic") {
         vector<int> nums{1,2,3};

@@ -44,7 +44,7 @@ public:
     }
 };
 
-TEST_CASE("3sum") {
+TEST_CASE("Solution") {
     Solution sol;
     SUBCASE("basic") {
         vector<int> nums{-1, 0, 1, 2, -1, -4};

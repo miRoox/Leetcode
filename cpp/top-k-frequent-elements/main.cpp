@@ -37,7 +37,7 @@ public:
     }
 };
 
-TEST_CASE("top k frequent elements") {
+TEST_CASE("Solution") {
     using std::set;
     Solution sol;
     SUBCASE("top 2") {

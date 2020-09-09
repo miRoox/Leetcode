@@ -37,7 +37,7 @@ public:
     }
 };
 
-TEST_CASE("3sum closest") {
+TEST_CASE("Solution") {
     Solution sol;
     SUBCASE("basic") {
         vector<int> nums{-1,2,1,-4};

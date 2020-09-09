@@ -97,7 +97,7 @@ TEST_CASE("List") {
     }
 }
 
-TEST_CASE("add two numbers") {
+TEST_CASE("Solution") {
     Solution sol;
     SUBCASE("basic") {
         List l1{2, 4, 3};

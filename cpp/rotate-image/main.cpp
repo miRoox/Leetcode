@@ -26,7 +26,7 @@ public:
     }
 };
 
-TEST_CASE("rotate image") {
+TEST_CASE("Solution") {
     Solution sol;
     SUBCASE("rank3") {
         vector<vector<int>> matrix{

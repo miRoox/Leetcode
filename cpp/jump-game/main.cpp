@@ -33,7 +33,7 @@ public:
     }
 };
 
-TEST_CASE("jump game") {
+TEST_CASE("Solution") {
     Solution sol;
     SUBCASE("without zero") {
         CHECK(sol.canJump({2,3,1,1,4}));

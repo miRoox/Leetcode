@@ -20,7 +20,7 @@ public:
     }
 };
 
-TEST_CASE("two sum") {
+TEST_CASE("Solution") {
     Solution sol;
     SUBCASE("basic") {
         CHECK(sol.twoSum(vector<int>{2, 7, 11, 15}, 9) == vector<int>{0, 1});
