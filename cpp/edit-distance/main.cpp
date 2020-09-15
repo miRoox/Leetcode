@@ -22,10 +22,9 @@ class Solution {
     template<typename T>
     class Matrix {
         size_t col;
-        size_t row;
         std::vector<T> data;
     public:
-        Matrix(size_t col, size_t row): col(col), row(row), data(col*row, 0) {}
+        Matrix(size_t col, size_t row): col(col), data(col*row, 0) {}
         inline T& operator()(size_t i, size_t j) {
             return data[i + j * col];
         }
