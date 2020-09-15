@@ -72,6 +72,12 @@ public:
             });
     }
 
+    List(const List&) = delete;
+
+    List(List&& other) noexcept {
+        std::swap(first, other.first);
+    }
+
     ~List() {
         deleteNode(first);
     }
@@ -80,6 +86,12 @@ public:
 
     bool operator == (const List& rhs) const & {
         return equiv(this->first, rhs.first);
+    }
+
+    List& operator =(const List& other) = delete;
+    List& operator =(List&& other) noexcept {
+        std::swap(first, other.first);
+        return *this;
     }
 };
 
