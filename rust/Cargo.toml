@@ -20,6 +20,7 @@ members = [
     "letter-combinations-of-a-phone-number",
     "4sum",
     "rotate-image",
+    "edit-distance",
     "power-of-two",
     "number-of-1-bits",
     "counting-bits",
