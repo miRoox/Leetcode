@@ -28,18 +28,18 @@ include_directories(${DOCTEST_INCLUDE_DIR})
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-add_subdirectory(two-sum)
-add_subdirectory(add-two-numbers)
-add_subdirectory(regular-expression-matching)
-add_subdirectory(3sum)
-add_subdirectory(3sum-closest)
-add_subdirectory(merge-two-sorted-lists)
-add_subdirectory(next-permutation)
-add_subdirectory(rotate-image)
-add_subdirectory(jump-game)
-add_subdirectory(edit-distance)
-add_subdirectory(sort-list)
-add_subdirectory(power-of-two)
-add_subdirectory(counting-bits)
-add_subdirectory(top-k-frequent-elements)
-add_subdirectory(top-k-frequent-words)
+add_subdirectory(two-sum) # 1
+add_subdirectory(add-two-numbers) # 2
+add_subdirectory(regular-expression-matching) # 10
+add_subdirectory(3sum) # 15
+add_subdirectory(3sum-closest) # 16
+add_subdirectory(merge-two-sorted-lists) # 21
+add_subdirectory(next-permutation) # 31
+add_subdirectory(rotate-image) # 48
+add_subdirectory(jump-game) # 55
+add_subdirectory(edit-distance) # 72
+add_subdirectory(sort-list) # 148
+add_subdirectory(power-of-two) # 231
+add_subdirectory(counting-bits) # 338
+add_subdirectory(top-k-frequent-elements) # 347
+add_subdirectory(top-k-frequent-words) # 692

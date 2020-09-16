@@ -1,27 +1,27 @@
 [workspace]
 
 members = [
-    "two-sum",
-    "add-two-numbers",
-    "longest-substring-without-repeating-characters",
-    "median-of-two-sorted-arrays",
-    "longest-palindromic-substring",
-    "zigzag-conversion",
-    "reverse-integer",
-    "string-to-integer-atoi",
-    "palindrome-number",
-    "regular-expression-matching",
-    "container-with-most-water",
-    "integer-to-roman",
-    "roman-to-integer",
-    "longest-common-prefix",
-    "3sum",
-    "3sum-closest",
-    "letter-combinations-of-a-phone-number",
-    "4sum",
-    "rotate-image",
-    "edit-distance",
-    "power-of-two",
-    "number-of-1-bits",
-    "counting-bits",
+    "two-sum", # 1
+    "add-two-numbers", # 2
+    "longest-substring-without-repeating-characters", # 3
+    "median-of-two-sorted-arrays", # 4
+    "longest-palindromic-substring", # 5
+    "zigzag-conversion", # 6
+    "reverse-integer", # 7
+    "string-to-integer-atoi", # 8
+    "palindrome-number", # 9
+    "regular-expression-matching", # 10
+    "container-with-most-water", # 11
+    "integer-to-roman", # 12
+    "roman-to-integer", # 13
+    "longest-common-prefix", # 14
+    "3sum", # 15
+    "3sum-closest", # 16
+    "letter-combinations-of-a-phone-number", # 17
+    "4sum", # 18
+    "rotate-image", # 48
+    "edit-distance", # 72
+    "number-of-1-bits", # 191
+    "power-of-two", # 231
+    "counting-bits", # 338
 ]
