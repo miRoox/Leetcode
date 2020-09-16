@@ -1,23 +1,8 @@
-name: Test
+name: Rust
 on: [push, pull_request]
 
 jobs:
-  cpp:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build
-        env:
-          CC: clang-9
-          CXX: clang++-9
-        run: |
-          cmake ..
-          cmake --build .
-        working-directory: cpp/build
-      - name: Test
-        run: ctest -C Debug -VV
-        working-directory: cpp/build
-  rust:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

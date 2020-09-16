@@ -1,0 +1,19 @@
+name: C++
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build
+        env:
+          CC: clang-9
+          CXX: clang++-9
+        run: |
+          cmake ..
+          cmake --build .
+        working-directory: cpp/build
+      - name: Test
+        run: ctest -C Debug -VV
+        working-directory: cpp/build
