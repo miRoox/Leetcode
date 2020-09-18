@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "two-sum", "two-sum\two-sum.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "add-two-numbers", "add-two-numbers\add-two-numbers.csproj", "{550A5380-562C-405E-BD82-C6C7C02E8402}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "merge-two-sorted-lists", "merge-two-sorted-lists\merge-two-sorted-lists.csproj", "{67110379-525F-4E41-A1F0-ABCD88C12100}"
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,5 +46,17 @@ Global
 		{550A5380-562C-405E-BD82-C6C7C02E8402}.Release|x64.Build.0 = Release|Any CPU
 		{550A5380-562C-405E-BD82-C6C7C02E8402}.Release|x86.ActiveCfg = Release|Any CPU
 		{550A5380-562C-405E-BD82-C6C7C02E8402}.Release|x86.Build.0 = Release|Any CPU
+		{67110379-525F-4E41-A1F0-ABCD88C12100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67110379-525F-4E41-A1F0-ABCD88C12100}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67110379-525F-4E41-A1F0-ABCD88C12100}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{67110379-525F-4E41-A1F0-ABCD88C12100}.Debug|x64.Build.0 = Debug|Any CPU
+		{67110379-525F-4E41-A1F0-ABCD88C12100}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{67110379-525F-4E41-A1F0-ABCD88C12100}.Debug|x86.Build.0 = Debug|Any CPU
+		{67110379-525F-4E41-A1F0-ABCD88C12100}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67110379-525F-4E41-A1F0-ABCD88C12100}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67110379-525F-4E41-A1F0-ABCD88C12100}.Release|x64.ActiveCfg = Release|Any CPU
+		{67110379-525F-4E41-A1F0-ABCD88C12100}.Release|x64.Build.0 = Release|Any CPU
+		{67110379-525F-4E41-A1F0-ABCD88C12100}.Release|x86.ActiveCfg = Release|Any CPU
+		{67110379-525F-4E41-A1F0-ABCD88C12100}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
