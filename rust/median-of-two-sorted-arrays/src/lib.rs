@@ -2,6 +2,7 @@ pub struct Solution {}
 
 //---
 use std::cmp::min;
+use std::cmp::Ordering::*;
 
 impl Solution {
     fn find_kth_slices(s1: &[i32], s2: &[i32], k: usize) -> i32 {
@@ -16,12 +17,10 @@ impl Solution {
         } else {
             let s1i = min(k / 2, n1);
             let s2i = k - s1i;
-            if s1[s1i - 1] < s2[s2i - 1] {
-                Self::find_kth_slices(&s1[s1i..], &s2[..], k - s1i)
-            } else if s1[s1i - 1] > s2[s2i - 1] {
-                Self::find_kth_slices(&s1[..], &s2[s2i..], k - s2i)
-            } else {
-                s1[s1i - 1]
+            match s1[s1i - 1].cmp(&s2[s2i - 1]) {
+                Less => Self::find_kth_slices(&s1[s1i..], &s2[..], k - s1i),
+                Greater => Self::find_kth_slices(&s1[..], &s2[s2i..], k - s2i),
+                Equal => s1[s1i - 1],
             }
         }
     }
