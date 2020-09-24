@@ -10,13 +10,71 @@ struct ListNode {
     ListNode(int x) : val(x), next(nullptr) {}
 };
 
+#include <utility>
+#include <limits>
+using std::size_t;
+using std::numeric_limits;
+using std::move;
+struct ListRange {
+    ListNode* head = nullptr;
+    ListNode** ptail = nullptr;
+
+    inline ListRange() = default;
+    inline ListRange(std::nullptr_t) { }
+    inline ListRange(ListNode* /*not null*/ init)
+        : head(init) { 
+            for(;init->next; init = init->next);
+            ptail = &init->next;
+        }
+    inline bool nonempty() const { return *this && head != *ptail; }
+    inline operator bool() const { return head && ptail; }
+    inline ListRange& append(ListNode* next) {
+        if (head) {
+            *ptail = next; // append
+        } else { // init
+            head = next;
+        }
+        ptail = &next->next;
+        return *this;
+    }
+    inline ListRange& prepend(ListNode* prev) {
+        if (head) {
+            prev->next = head;
+        }
+        else {
+            ptail = &prev->next;
+        }
+        head = prev;
+        return *this;
+    }
+};
+
 class Solution {
-    inline ListNode* join(ListNode* l1, ListNode* l2) {
-        if (!l1) 
+    inline ListRange sortImpl(ListRange&& range) {
+        if (!range)
+            return range;
+        ListRange left;
+        ListRange right;
+        ListNode* prior = range.head;
+        const auto x = prior->val;
+        range.head = prior->next;
+        for (; range.nonempty(); range.head = range.head->next) {
+            if (range.head->val < x) {
+                left.append(range.head);
+            } else {
+                right.append(range.head);
+            }
+        }
+        left = sortImpl(move(left));
+        right = sortImpl(move(right));
+        return join(move(left), move(right.prepend(prior)));
+    }
+    inline ListRange join(ListRange&& l1, ListRange&& l2) {
+        if (!l1)
             return l2;
-        ListNode* tail = l1;
-        while (tail->next) tail = tail->next;
-        tail->next = l2;
+        *l1.ptail = l2.head;
+        *l2.ptail = nullptr;
+        l1.ptail = l2.ptail;
         return l1;
     }
 public:
@@ -24,42 +82,8 @@ public:
     ListNode* sortList(ListNode* head) {
         if (!head)
             return head;
-        const auto x = head->val;
-        ListNode* next = head->next;
-        ListNode* lhead = nullptr;
-        ListNode* ltail = nullptr;
-        ListNode* rhead = nullptr;
-        ListNode* rtail = nullptr;
-        while (next) {
-            if (next->val < x) {
-                if (lhead) {
-                    ltail->next = next;  // append
-                    ltail = ltail->next; // advance
-                } else { // init
-                    lhead = next;
-                    ltail = next;
-                }
-            } else {
-                if (rhead) {
-                    rtail->next = next;  // append
-                    rtail = rtail->next; // advance
-                } else { // init
-                    rhead = next;
-                    rtail = next;
-                }
-            }
-            next = next->next;
-        }
-        if (ltail) {
-            ltail->next = nullptr;
-        }
-        if (rtail) {
-            rtail->next = nullptr;
-        }
-        lhead = sortList(lhead);
-        rhead = sortList(rhead);
-        head->next = rhead; // prepend
-        return join(lhead, head);
+        ListRange range = sortImpl(ListRange(head));
+        return range.head;
     }
 };
 
