@@ -9,6 +9,8 @@ jobs:
       options: --security-opt seccomp=unconfined
     steps:
       - uses: actions/checkout@v2
+      - name: Install Rustfmt
+        run: rustup component add rustfmt
       - name: Build
         run: cargo build --workspace --verbose
         working-directory: rust
