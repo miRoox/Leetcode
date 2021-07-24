@@ -1,4 +1,4 @@
-namespace merge_two_sorted_lists {
+namespace MergeTwoSortedLists {
     public class Solution {
         public ListNode MergeTwoLists(ListNode l1, ListNode l2) {
             if (l1 is null)

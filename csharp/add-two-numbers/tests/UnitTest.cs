@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace add_two_numbers
+namespace AddTwoNumbers.Tests
 {
     public class UnitTest
     {

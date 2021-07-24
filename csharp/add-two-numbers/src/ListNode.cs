@@ -1,14 +1,11 @@
 using System;
 using System.Linq;
 
-namespace merge_two_sorted_lists {
+namespace AddTwoNumbers {
     public class ListNode : IEquatable<ListNode> {
         public int val;
         public ListNode next;
-        public ListNode(int val=0, ListNode next=null) {
-            this.val = val;
-            this.next = next;
-        }
+        public ListNode(int x) { val = x; }
 
         public bool Equals(ListNode other) { 
             return other != null 
@@ -25,7 +22,7 @@ namespace merge_two_sorted_lists {
         }
 
         public static ListNode Create(params int[] args) {
-            return args.Reverse().Aggregate((ListNode)null, (next, val) => new ListNode(val, next));
+            return args.Reverse().Aggregate((ListNode)null, (next, val) => new ListNode(val){next = next});
         }
     }
 }

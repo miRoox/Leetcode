@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace merge_two_sorted_lists
+namespace AddTwoNumbers.Tests
 {
     public class ListUnitTest
     {
@@ -20,7 +20,7 @@ namespace merge_two_sorted_lists
         [Fact]
         public void Test2()
         {
-            Assert.Equal(new ListNode(1, new ListNode(2)), ListNode.Create(1, 2));
+            Assert.Equal(new ListNode(1){ next = new ListNode(2) }, ListNode.Create(1, 2));
         }
     }
 }

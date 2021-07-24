@@ -1,6 +1,6 @@
 using System;
 
-namespace add_two_numbers {
+namespace AddTwoNumbers {
     public class Solution {
         private ListNode implAdd(ListNode l1, ListNode l2, int carry) {
             int v1 = getNext(ref l1);

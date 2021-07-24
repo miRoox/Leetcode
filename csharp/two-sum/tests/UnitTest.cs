@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace two_sum
+namespace TwoSum.Tests
 {
     public class UnitTest
     {

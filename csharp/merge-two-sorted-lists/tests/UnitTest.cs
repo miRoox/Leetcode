@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace merge_two_sorted_lists
+namespace MergeTwoSortedLists.Tests
 {
     public class UnitTest
     {
