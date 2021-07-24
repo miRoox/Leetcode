@@ -15,3 +15,5 @@ jobs:
       - name: Test
         run: dotnet test --no-build --verbosity normal /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
         working-directory: csharp
+      - name: Codecov
+        uses: codecov/codecov-action@v2
