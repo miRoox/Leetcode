@@ -6,10 +6,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Install LLVM and Clang
+        uses: KyleMayes/install-llvm-action@v1
+        with:
+          version: "11"
       - name: Build
         env:
-          CC: clang-9
-          CXX: clang++-9
+          CC: clang-11
+          CXX: clang++-11
         run: |
           cmake ..
           cmake --build .
