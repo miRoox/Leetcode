@@ -74,9 +74,7 @@ public:
 
     List(const List&) = delete;
 
-    List(List&& other) noexcept {
-        std::swap(first, other.first);
-    }
+    List(List&& other) noexcept : first(std::exchange(other.first, nullptr)) { }
 
     ~List() {
         deleteNode(first);

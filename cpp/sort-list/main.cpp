@@ -123,9 +123,7 @@ public:
     List(const std::initializer_list<int>& list) : first(construct(list)) { }
 
     List(const List&) = delete;
-    List(List&& other) noexcept { 
-        std::swap(first, other.first); 
-    }
+    List(List&& other) noexcept : first(std::exchange(other.first, nullptr)) { }
 
     ~List() {
         deleteNode(first);
@@ -134,9 +132,7 @@ public:
     const ListNode* node() const noexcept { return first; }
 
     ListNode* take_node() noexcept {
-        ListNode* node = nullptr;
-        std::swap(first, node);
-        return node;
+        return std::exchange(first, nullptr);
     }
 
     bool operator == (const List& rhs) const & {
